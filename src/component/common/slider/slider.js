@@ -31,7 +31,6 @@ export const Slider = (props) => {
 
   let productslider = [1,2];
 //   let slideimage = [];
-  console.log("firsttt",slideimage);
   return (
     <div className="slider">
       <ArrowBackIosNewOutlinedIcon

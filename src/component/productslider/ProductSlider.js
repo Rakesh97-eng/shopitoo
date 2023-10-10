@@ -5,7 +5,6 @@ import { Slider } from "../common/slider/slider"
 
 export const ProductSlider = ()=>{
     let {products} = useSelector((state)=>state)
-    console.log(products);
     const dispatch = useDispatch();
     useEffect(()=>{
         dispatch(FetchProduct())

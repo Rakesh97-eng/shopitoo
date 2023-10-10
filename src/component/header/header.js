@@ -13,6 +13,7 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
+import { useSelector } from 'react-redux';
 
 const pages = ["Cart",'Shop','Login'];
 const settings = ['Profile', 'Logout'];
@@ -20,7 +21,7 @@ const settings = ['Profile', 'Logout'];
 function Header() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
-
+  const {cartValue} = useSelector((state)=>state)
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -37,7 +38,7 @@ function Header() {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar position="fixed" >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
@@ -91,6 +92,7 @@ function Header() {
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">{page}</Typography>
+                 {page == "Cart" && <Tooltip>{cartValue.length}</Tooltip>}
                 </MenuItem>
               ))}
             </Menu>
@@ -116,13 +118,17 @@ function Header() {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
+              <>
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
                 {page}
+
               </Button>
+              {page == "Cart" && <Tooltip>{cartValue.length}</Tooltip>}
+              </>
             ))}
           </Box>
 

@@ -29,9 +29,12 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import { useDispatch } from "react-redux";
+import { addCart } from "../../../redux/productfeautes/productslice";
 
 export default function     Customcard(props) {
   let { sliderdata, slidevalue0, slidevalue1 } = props;
+  const dispatch = useDispatch();
   const productImageslide = {
     backgroundColor: "white",
     height: "250px",
@@ -42,10 +45,13 @@ export default function     Customcard(props) {
     justifyContent: "center",
   };
 
+  const handleClick = (slidevalue)=>{
+    dispatch(addCart(slidevalue))
+  }
+
   return (
     <>
       {sliderdata.map((slide, i) => {
-        console.log("slideee",slide);
         return (
           i >= slidevalue0 &&
           i < slidevalue1 && (
@@ -61,7 +67,7 @@ export default function     Customcard(props) {
                 </Typography>
               </CardContent>
               <CardActions>
-                <Button size="small">Add Cart</Button>
+                <Button size="small" onClick={()=>handleClick(slide)}>Add Cart</Button>
               </CardActions>
             </Card>
           )
