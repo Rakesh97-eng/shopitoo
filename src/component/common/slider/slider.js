@@ -2,6 +2,7 @@ import "./slider.css";
 import ArrowBackIosNewOutlinedIcon from "@mui/icons-material/ArrowBackIosNewOutlined";
 import ArrowForwardIosOutlinedIcon from "@mui/icons-material/ArrowForwardIosOutlined";
 import { useState } from "react";
+import Customcard from "../card/customcard";
 export const Slider = (props) => {
   const { sliderData, slidename } = props;
   const [currentslide, setCurrentslide] = useState(0);
@@ -16,15 +17,6 @@ export const Slider = (props) => {
     currentslide == sliderlength
       ? setCurrentslide(currentslide)
       : setCurrentslide(currentslide + 1);
-  };
-
-  const productImageslide = {
-    backgroundColor: "white",
-    height: "250px",
-    width: "280px",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
   };
 
   const productslide = {
@@ -54,30 +46,14 @@ export const Slider = (props) => {
 
       {slidename == "product" ? (
         productslider.map((data,index)=>{
-            return   index == currentslide &&  <div style={productslide}>
-                {data}
-            {sliderData.map((slide, index) => {
-              const { image, name, description } = slide;
-              if( index < (currentslide+1)*5 ){
-                console.log("slide",slideimage);
-                 if(slideimage.length>0 && slideimage.includes(index)){
-                    console.log("cominggg");
-                    // setSlideimage(slideimage.shift());
-                 }
-                 setSlideimage([...slideimage,index]);
-                }
-                console.log(slideimage);
-              return (
-                slideimage.length>0 && slideimage.includes(index) && (
-                  <div style={productImageslide}>
-                    <img src={sliderData[index].image} height="80%" width="80%"></img>
-                  </div>
-                )
-              );
-            })}
+          return index == currentslide &&  
+          <div style={productslide}>
+           {index ==0 && <Customcard sliderdata={sliderData} slidevalue0="0" slidevalue1="5"/>}
+           {index ==1 && <Customcard sliderdata={sliderData} slidevalue0="5" slidevalue1="10"/>}
           </div>
+        
         })
-      
+       
       ) : (
         sliderData.map((slide, index) => {
           const { image, name, description } = slide;
