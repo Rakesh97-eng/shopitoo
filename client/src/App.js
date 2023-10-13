@@ -5,6 +5,8 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { AppRoutes } from './component/router/routes';
 import { BrowserRouter } from 'react-router-dom';
+import Clickcomp from './component/clickcomp/clickcomp';
+import Hovercomp from './component/hovercomp/hovercomp';
 
 
 function App() {
@@ -12,8 +14,10 @@ function App() {
     <div>
 
       <ToastContainer/>
+      <Clickcomp/>
+      <Hovercomp/>
       <BrowserRouter>
-      <AppRoutes/>
+      {/* <AppRoutes/> */}
       </BrowserRouter>
      
     </div>
