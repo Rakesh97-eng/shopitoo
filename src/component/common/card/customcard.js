@@ -31,6 +31,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { useDispatch } from "react-redux";
 import { addCart } from "../../../redux/productfeautes/productslice";
+import { Sucessmessage } from "../toaster/Toaster";
 
 export default function     Customcard(props) {
   let { sliderdata, slidevalue0, slidevalue1 } = props;
@@ -47,6 +48,7 @@ export default function     Customcard(props) {
 
   const handleClick = (slidevalue)=>{
     dispatch(addCart(slidevalue))
+    Sucessmessage("Added to cart")
   }
 
   return (
