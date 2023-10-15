@@ -1,10 +1,11 @@
 import express from "express";
+import { Logincontroller, registercontroller } from "../controllers/authcontroller.js";
 
 export const routes = express.Router();
 
 routes.post('/register',(req,res)=>{
-    res.send("Working routes")
+    registercontroller(req,res)
 })
 routes.post('/login',(req,res)=>{
-    res.send("Working routes")
+    Logincontroller(req,res)
 })
