@@ -1,7 +1,6 @@
 import { Usermodel } from "../models/userModel.js";
 import bcrypt from "bcrypt";
 import jwt  from "jsonwebtoken";
-import cookieParser from "cookie-parser";
 
 export const Registerservice = async (req, callback) => {
   let userdetails = req.body;
@@ -23,19 +22,18 @@ export const Registerservice = async (req, callback) => {
 export const Loginservice = async (req, callback) => {
   let userdetails = req.body;
   let validEmail = await Usermodel.findOne({useremail:userdetails.email});
-  try{
 
+  try{
     let comparepassword = await bcrypt.compare(userdetails.password,validEmail.userpassword);
     if(comparepassword){
       var token = jwt.sign({ _id:userdetails.email}, 'LOGINSECRET');
-      res.cookie('authcookie',token,{maxAge:900000,httpOnly:true})
+       res.cookie('authcookie',token,{maxAge:900000,httpOnly:true})
       console.log("token",token);
     }
     else{
       callback("Password incorrect")
     }
   }
-
   catch(err){
     
     callback(err.message)

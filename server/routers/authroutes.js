@@ -5,6 +5,7 @@ export const routes = express.Router();
 
 routes.post('/register',(req,res)=>{
     registercontroller(req,res)
+    
 })
 routes.post('/login',(req,res)=>{
     Logincontroller(req,res)

@@ -14,10 +14,10 @@ function App() {
     <div>
 
       <ToastContainer/>
-      <Clickcomp/>
-      <Hovercomp/>
+      {/* <Clickcomp/>
+      <Hovercomp/> */}
       <BrowserRouter>
-      {/* <AppRoutes/> */}
+      <AppRoutes/>
       </BrowserRouter>
      
     </div>
